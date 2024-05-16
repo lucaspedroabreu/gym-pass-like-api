@@ -11,6 +11,7 @@ const IPAddress = z.string().regex(ipv4Regex, {
 // Server configuration schema
 const nodeServerEnv = z.object({
   NODE_ENV: z.enum(['test', 'development', 'production']).default('development'),
+  TEST_TYPE: z.enum(['unit', 'integration', 'e2e']).default('unit'),
   SERVER_PORT: z.preprocess((port) => parseInt(String(port), 10), z.number().default(3333)),
 })
 

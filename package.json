@@ -10,10 +10,14 @@
     "build": "rimraf dist && tsup",
     "start": "node dist/server.js",
     "dev": "tsx watch --inspect src/server.ts",
+    "test": "set NODE_ENV=test&& vitest run",
+    "test:watch": "set NODE_ENV=test&& vitest",
+    "test:coverage": "set NODE_ENV=test&& vitest run --coverage",
+    "test:ui": "set NODE_ENV=test&& vitest --ui",
     "instrospect": "drizzle-kit instrospect --config=drizzle.config.ts",
     "generate": "drizzle-kit generate --config=drizzle.config.ts",
-    "migrate": "tsx -r dotenv/config src/db/migrate.ts",
-    "studio": "drizzle-kit studio"
+    "migrate": "tsx -r dotenv/config drizzle/migrate.ts",
+    "studio": "drizzle-kit studio --port 3434 --verbose"
   },
   "keywords": [],
   "author": "",
@@ -38,11 +42,15 @@
     "@types/jsonwebtoken": "9.0.6",
     "@types/node": "20.12.7",
     "@types/pg": "8.11.5",
+    "@vitest/coverage-v8": "1.6.0",
+    "cross-env": "7.0.3",
     "drizzle-kit": "0.21.1",
     "eslint": "9.1.1",
     "globals": "15.0.0",
     "tsup": "8.0.2",
     "tsx": "4.7.3",
-    "typescript": "5.4.5"
+    "typescript": "5.4.5",
+    "vite-tsconfig-paths": "4.3.2",
+    "vitest": "1.6.0"
   }
 }
